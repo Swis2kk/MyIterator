@@ -1,14 +1,12 @@
 package com.iterator;
 
-import com.generic.Type;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.Iterator;
 
 public class MyIterator implements Iterator <String> {
 
-    private BufferedReader bufferedReader= null;
+    private BufferedReader bufferedReader;
 
     public MyIterator (BufferedReader bufferedReader){
         this.bufferedReader=bufferedReader;
@@ -27,7 +25,7 @@ public class MyIterator implements Iterator <String> {
     @Override
     public String next() {
         try {
-            if (hasNext()) return bufferedReader.readLine();
+            return bufferedReader.readLine();
         } catch (IOException e) {
             e.printStackTrace();
         }
