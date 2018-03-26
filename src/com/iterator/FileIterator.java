@@ -1,17 +1,23 @@
 package com.iterator;
 
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-public class MyIterator implements Iterator <String> {
+public class FileIterator implements Iterator<String> {
 
 
     private BufferedReader bufferedReader;
 
-    public MyIterator (BufferedReader bufferedReader){
-        this.bufferedReader=bufferedReader;
+    public FileIterator(String path) {
+        try {
+            bufferedReader = new BufferedReader(new FileReader(path));
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 
     private String current;
@@ -32,11 +38,11 @@ public class MyIterator implements Iterator <String> {
     }
 
     @Override
-    public String next(){
-      try {
-          return bufferedReader.readLine();
-      } catch (IOException io) {
-          throw new NoSuchElementException();
-      }
+    public String next() {
+        try {
+            return bufferedReader.readLine();
+        } catch (IOException io) {
+            throw new NoSuchElementException();
+        }
     }
 }
