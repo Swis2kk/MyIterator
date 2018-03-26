@@ -19,9 +19,8 @@ public class MyIterator implements Iterator <String> {
         try {
             return bufferedReader.readLine() != null;
         } catch (IOException e) {
-            e.printStackTrace();
+            return false;
         }
-        return false;
     }
 
     @Override
