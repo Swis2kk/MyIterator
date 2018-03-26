@@ -3,8 +3,10 @@ package com.iterator;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 public class MyIterator implements Iterator <String> {
+
 
     private BufferedReader bufferedReader;
 
@@ -23,12 +25,11 @@ public class MyIterator implements Iterator <String> {
     }
 
     @Override
-    public String next() {
-        try {
-            return bufferedReader.readLine();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return null;
+    public String next() throws NoSuchElementException {
+       try {
+           return bufferedReader.readLine();
+       } catch (IOException o){
+           throw new NoSuchElementException();
+       }
     }
 }
