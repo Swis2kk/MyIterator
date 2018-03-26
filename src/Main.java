@@ -6,14 +6,22 @@ public class Main {
 
     public static void main(String[] args) {
 
-        String path = "";
+        String path = "D:/file.txt";
+        MyIterator myIterator;
 
         try {
-            MyIterator myIterator = new MyIterator(new BufferedReader(new FileReader(path)));
+            myIterator = new MyIterator(new BufferedReader(new FileReader(path)));
+
+
+            myIterator.hasNext();
+            myIterator.hasNext();
+
+
+            System.out.println(myIterator.next());
+            System.out.println(myIterator.next());
+
         } catch (FileNotFoundException e) {
-            System.out.println("File not found!");
+            e.printStackTrace();
         }
-
-
     }
 }

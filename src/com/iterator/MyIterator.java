@@ -14,21 +14,29 @@ public class MyIterator implements Iterator <String> {
         this.bufferedReader=bufferedReader;
     }
 
+    private String current;
+
     @Override
     public boolean hasNext() {
         try {
-            return bufferedReader.readLine() != null;
+            bufferedReader.mark(1);
+            if (bufferedReader.read() != -1) {
+                bufferedReader.reset();
+                return true;
+            } else {
+                return false;
+            }
         } catch (IOException e) {
             return false;
         }
     }
 
     @Override
-    public String next() throws NoSuchElementException {
-       try {
-           return bufferedReader.readLine();
-       } catch (IOException o){
-           throw new NoSuchElementException();
-       }
+    public String next(){
+      try {
+          return bufferedReader.readLine();
+      } catch (IOException io) {
+          throw new NoSuchElementException();
+      }
     }
 }
