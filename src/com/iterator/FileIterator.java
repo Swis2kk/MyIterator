@@ -20,8 +20,6 @@ public class FileIterator implements Iterator<String> {
         }
     }
 
-    private String current;
-
     @Override
     public boolean hasNext() {
         try {
